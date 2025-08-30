@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLC Formation App</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0;
+            border-radius: 0;
+            box-shadow: none;
+        }
+        
+        header {
+            border-radius: 0;
+        }
+        
+        /* Response Editor Styles */
+        .editor-container {
+            background-color: #f9fbfd;
+            border: 1px solid #e3ebf6;
+            border-radius: 4px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .editor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .editor-header h3 {
+            margin: 0;
+        }
+        
+        .editor-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .editor-content {
+            background-color: white;
+            border: 1px solid #e3ebf6;
+            border-radius: 4px;
+            padding: 15px;
+        }
+        
+        .editor-content p {
+            margin-bottom: 10px;
+        }
+        
+        .editor-content .original {
+            color: #95aac9;
+            text-decoration: line-through;
+            margin-bottom: 5px;
+        }
+        
+        .editor-content .improved {
+            color: #42ba96;
+            font-weight: 500;
+        }
+        
+        .improvement-reason {
+            font-size: 0.9rem;
+            color: #6c757d;
+            font-style: italic;
+            margin-top: 5px;
+            padding-left: 10px;
+            border-left: 3px solid #f6c343;
+        }
+        
+        /* Email Form Styles */
+        .email-form {
+            background-color: #f9fbfd;
+            border: 1px solid #e3ebf6;
+            border-radius: 4px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        
+        .email-form h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Form Your LLC</h1>
+            <p class="tagline">A friendly guide to creating your Limited Liability Company</p>
+        </header>
+
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+            <div class="step-indicators">
+                <div class="step active" data-step="1">1</div>
+                <div class="step" data-step="2">2</div>
+                <div class="step" data-step="3">3</div>
+                <div class="step" data-step="4">4</div>
+                <div class="step" data-step="5">5</div>
+                <div class="step" data-step="6">6</div>
+                <div class="step" data-step="7">7</div>
+                <div class="step" data-step="8">8</div>
+                <div class="step" data-step="9">9</div>
+            </div>
+        </div>
+
+        <main id="form-container">
+            <!-- Welcome Screen -->
+            <section id="welcome-screen" class="form-section active">
+                <h2>Welcome to Your LLC Formation Journey!</h2>
+                <p>We'll guide you through the entire process of forming your LLC using simple, easy-to-understand language.</p>
+                <p>This app will:</p>
+                <ul>
+                    <li>Ask you all the questions needed for your LLC formation</li>
+                    <li>Provide helpful explanations for each step</li>
+                    <li>Review and improve your answers to increase approval chances</li>
+                    <li>Generate your completed LLC formation documents</li>
+                    <li>Email the documents to you with clear next steps</li>
+                </ul>
+                <p>Ready to get started? Let's create your LLC!</p>
+                <div class="button-group">
+                    <button class="btn primary" onclick="nextSection()">Let's Begin</button>
+                </div>
+            </section>
+
+            <!-- Step 1: State Selection -->
+            <section id="state-selection" class="form-section">
+                <h2>Select Your State</h2>
+                <p>First, let's select the state where you want to form your LLC. Each state has different requirements and fees.</p>
+                
+                <div class="form-group">
+                    <label for="state">In which state would you like to form your LLC?</label>
+                    <select id="state" onchange="updateStateInfo()">
+                        <option value="">Select a state</option>
+                        <option value="AL">Alabama</option>
+                        <option value="AK">Alaska</option>
+                        <option value="AZ">Arizona</option>
+                        <option value="AR">Arkansas</option>
+                        <option value="CA">California</option>
+                        <option value="CO">Colorado</option>
+                        <option value="CT">Connecticut</option>
+                        <option value="DE">Delaware</option>
+                        <option value="FL">Florida</option>
+                        <option value="GA">Georgia</option>
+                        <option value="HI">Hawaii</option>
+                        <option value="ID">Idaho</option>
+                        <option value="IL">Illinois</option>
+                        <option value="IN">Indiana</option>
+                        <option value="IA">Iowa</option>
+                        <option value="KS">Kansas</option>
+                        <option value="KY">Kentucky</option>
+                        <option value="LA">Louisiana</option>
+                        <option value="ME">Maine</option>
+                        <option value="MD">Maryland</option>
+                        <option value="MA">Massachusetts</option>
+                        <option value="MI">Michigan</option>
+                        <option value="MN">Minnesota</option>
+                        <option value="MS">Mississippi</option>
+                        <option value="MO">Missouri</option>
+                        <option value="MT">Montana</option>
+                        <option value="NE">Nebraska</option>
+                        <option value="NV">Nevada</option>
+                        <option value="NH">New Hampshire</option>
+                        <option value="NJ">New Jersey</option>
+                        <option value="NM">New Mexico</option>
+                        <option value="NY">New York</option>
+                        <option value="NC">North Carolina</option>
+                        <option value="ND">North Dakota</option>
+                        <option value="OH">Ohio</option>
+                        <option value="OK">Oklahoma</option>
+                        <option value="OR">Oregon</option>
+                        <option value="PA">Pennsylvania</option>
+                        <option value="RI">Rhode Island</option>
+                        <option value="SC">South Carolina</option>
+                        <option value="SD">South Dakota</option>
+                        <option value="TN">Tennessee</option>
+                        <option value="TX">Texas</option>
+                        <option value="UT">Utah</option>
+                        <option value="VT">Vermont</option>
+                        <option value="VA">Virginia</option>
+                        <option value="WA">Washington</option>
+                        <option value="WV">West Virginia</option>
+                        <option value="WI">Wisconsin</option>
+                        <option value="WY">Wyoming</option>
+                        <option value="DC">District of Columbia</option>
+                    </select>
+                    <div class="help-text">
+                        <p>Choose the state where you plan to primarily do business. This is typically where your business is physically located.</p>
+                        <p>Some states like Delaware, Nevada, and Wyoming are popular for certain tax benefits, but you may need to register as a foreign LLC in your home state as well.</p>
+                    </div>
+                </div>
+
+                <div id="state-info" style="display: none;">
+                    <div class="info-box">
+                        <h3>State Information</h3>
+                        <div id="state-details"></div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn secondary" onclick="prevSection()">Back</button>
+                    <button class="btn primary" onclick="nextSection()">Continue</button>
+                </div>
+            </section>
+
+            <!-- Additional sections from the original LLC app would go here -->
+            <!-- ... -->
+
+            <!-- New Step: Response Editor -->
+            <section id="response-editor" class="form-section">
+                <h2>Review & Improve Your Responses</h2>
+                <p>We've analyzed your responses and made some improvements to increase your chances of approval. Please review the changes below.</p>
+                
+                <div class="editor-container">
+                    <div class="editor-header">
+                        <h3>LLC Name</h3>
+                        <div class="editor-actions">
+                            <button class="btn secondary" onclick="acceptEdit('llc-name')">Accept</button>
+                            <button class="btn secondary" onclick="revertEdit('llc-name')">Revert</button>
+                        </div>
+                    </div>
+                    <div class="editor-content" id="llc-name-editor">
+                        <p class="original">Original: <span id="original-llc-name">Mountain Bike Adventures LLC</span></p>
+                        <p class="improved">Improved: <span id="improved-llc-name">Mountain Bike Adventures, LLC</span></p>
+                        <p class="improvement-reason">Added comma before LLC for proper formatting required by most state filing systems.</p>
+                    </div>
+                </div>
+                
+                <div class="editor-container">
+                    <div class="editor-header">
+                        <h3>Business Purpose</h3>
+                        <div class="editor-actions">
+                            <button class="btn secondary" onclick="acceptEdit('business-purpose')">Accept</button>
+                            <button class="btn secondary" onclick="revertEdit('business-purpose')">Revert</button>
+                        </div>
+                    </div>
+                    <div class="editor-content" id="business-purpose-editor">
+                        <p class="original">Original: <span id="original-business-purpose">bike tours and rentals</span></p>
+                        <p class="improved">Improved: <span id="improved-business-purpose">Providing guided mountain bike tours and equipment rentals for recreational purposes.</span></p>
+                        <p class="improvement-reason">Added more specific details about the business activities and formalized the language for official filing purposes.</p>
+                    </div>
+                </div>
+                
+                <div class="editor-container">
+                    <div class="editor-header">
+                        <h3>Registered Agent Address</h3>
+                        <div class="editor-actions">
+                            <button class="btn secondary" onclick="acceptEdit('agent-address')">Accept</button>
+                            <button class="btn secondary" onclick="revertEdit('agent-address')">Revert</button>
+                        </div>
+                    </div>
+                    <div class="editor-content" id="agent-address-editor">
+                        <p class="original">Original: <span id="original-agent-address">123 Main St</span></p>
+                        <p class="improved">Improved: <span id="improved-agent-address">123 Main Street</span></p>
+                        <p class="improvement-reason">Spelled out "Street" instead of using abbreviation to meet filing requirements in most states.</p>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn secondary" onclick="prevSection()">Back</button>
+                    <button class="btn primary" onclick="nextSection()">Continue with Improved Responses</button>
+                </div>
+            </section>
+
+            <!-- Final Step: Documents Generated -->
+            <section id="documents" class="form-section">
+                <h2>Your LLC Documents Are Ready!</h2>
+                <p>Congratulations! Your LLC formation documents have been generated with your improved responses.</p>
+                
+                <div class="document-section">
+                    <h3 id="certificate-title">Certificate of Organization</h3>
+                    <p>This is the official document you'll file with your state.</p>
+                    <button class="btn document" onclick="downloadDocument('certificate')">Download Formation Document</button>
+                </div>
+                
+                <div class="document-section">
+                    <h3>Operating Agreement</h3>
+                    <p>This document outlines how your LLC will be run. While not required to be filed with the state, it's important to have.</p>
+                    <button class="btn document" onclick="downloadDocument('operating')">Download Operating Agreement</button>
+                </div>
+                
+                <div class="email-form">
+                    <h3>Email Your Documents</h3>
+                    <p>We can email these documents to you along with filing instructions.</p>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="you@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email-message">Additional Message (Optional)</label>
+                        <textarea id="email-message" placeholder="Any specific questions or notes you'd like to include..."></textarea>
+                    </div>
+                    
+                    <button class="btn primary" onclick="sendEmail()">Send Documents</button>
+                </div>
+                
+                <div class="document-section">
+                    <h3>Next Steps</h3>
+                    <ol id="next-steps-list">
+                        <!-- Next steps will be populated based on state -->
+                        <li>File your Certificate of Organization with the state filing office</li>
+                        <li>Apply for an EIN (Employer Identification Number) with the IRS</li>
+                        <li>Open a business bank account</li>
+                        <li>Check for any required business licenses or permits</li>
+                    </ol>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn secondary" onclick="prevSection()">Back</button>
+                    <button class="btn primary" onclick="completeProcess()">Complete & Return to Dashboard</button>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>This app is designed to help you form your LLC but does not provide legal advice. For legal questions, please consult an attorney.</p>
+            <p>&copy; 2025 Business Startup Suite</p>
+        </footer>
+    </div>
+
+    <script>
+        // Global variables
+        let currentSection = 0;
+        const sections = document.querySelectorAll('.form-section');
+        const totalSections = sections.length;
+        let formData = {};
+        let originalResponses = {};
+        let improvedResponses = {};
+
+        // Initialize the form
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update progress bar
+            updateProgress();
+            
+            // Send initial progress to parent window
+            sendProgressToParent(0);
+        });
+
+        // Navigation functions
+        function nextSection() {
+            // Validate current section before proceeding
+            if (!validateSection(currentSection)) {
+                return;
+            }
+            
+            // Save data from current section
+            saveCurrentSectionData();
+            
+            // Hide current section
+            sections[currentSection].classList.remove('active');
+            
+            // Move to next section
+            currentSection++;
+            
+            // Special handling for response editor section
+            if (currentSection === 7) { // Assuming response editor is section 7
+                populateResponseEditor();
+            }
+            
+            // Show next section
+            sections[currentSection].classList.add('active');
+            
+            // Update progress bar
+            updateProgress();
+            
+            // Send progress to parent window
+            const progressPercentage = Math.round((currentSection / (totalSections - 1)) * 100);
+            sendProgressToParent(progressPercentage);
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function prevSection() {
+            // Hide current section
+            sections[currentSection].classList.remove('active');
+            
+            // Move to previous section
+            currentSection--;
+            
+            // Show previous section
+            sections[currentSection].classList.add('active');
+            
+            // Update progress bar
+            updateProgress();
+            
+            // Send progress to parent window
+            const progressPercentage = Math.round((currentSection / (totalSections - 1)) * 100);
+            sendProgressToParent(progressPercentage);
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function updateProgress() {
+            // Skip welcome screen for progress calculation
+            const progressPercentage = ((currentSection) / (totalSections - 1)) * 100;
+            document.getElementById('progress').style.width = `${progressPercentage}%`;
+            
+            // Update step indicators
+            const steps = document.querySelectorAll('.step');
+            steps.forEach((step, index) => {
+                const stepNum = parseInt(step.getAttribute('data-step'));
+                
+                if (stepNum < currentSection) {
+                    step.classList.add('completed');
+                    step.classList.remove('active');
+                } else if (stepNum === currentSection) {
+                    step.classList.add('active');
+                    step.classList.remove('completed');
+                } else {
+                    step.classList.remove('active');
+                    step.classList.remove('completed');
+                }
+            });
+        }
+
+        // Basic validation function (placeholder)
+        function validateSection(sectionIndex) {
+            // For demo purposes, we'll just return true
+            return true;
+        }
+
+        // Save data from current section (placeholder)
+        function saveCurrentSectionData() {
+            const section = sections[currentSection];
+            
+            // State Selection
+            if (section.id === 'state-selection') {
+                formData.state = document.getElementById('state').value;
+                
+                // Send LLC data to parent window
+                sendLLCDataToParent();
+            }
+            
+            // For demo purposes, we'll simulate saving other data
+            if (currentSection === 1) {
+                // Simulate LLC name data
+                formData.llcName = "Mountain Bike Adventures LLC";
+                originalResponses.llcName = formData.llcName;
+                improvedResponses.llcName = "Mountain Bike Adventures, LLC";
+                
+                // Simulate business purpose data
+                formData.businessPurpose = "bike tours and rentals";
+                originalResponses.businessPurpose = formData.businessPurpose;
+                improvedResponses.businessPurpose = "Providing guided mountain bike tours and equipment rentals for recreational purposes.";
+                
+                // Simulate agent address data
+                formData.agentAddress = "123 Main St";
+                originalResponses.agentAddress = formData.agentAddress;
+                improvedResponses.agentAddress = "123 Main Street";
+            }
+        }
+
+        // Populate response editor with data
+        function populateResponseEditor() {
+            // Populate LLC name editor
+            document.getElementById('original-llc-name').textContent = originalResponses.llcName;
+            document.getElementById('improved-llc-name').textContent = improvedResponses.llcName;
+            
+            // Populate business purpose editor
+            document.getElementById('original-business-purpose').textContent = originalResponses.businessPurpose;
+            document.getElementById('improved-business-purpose').textContent = improvedResponses.businessPurpose;
+            
+            // Populate agent address editor
+            document.getElementById('original-agent-address').textContent = originalResponses.agentAddress;
+            document.getElementById('improved-agent-address').textContent = improvedResponses.agentAddress;
+        }
+
+        // Accept edited response
+        function acceptEdit(field) {
+            if (field === 'llc-name') {
+                formData.llcName = improvedResponses.llcName;
+                document.getElementById('llc-name-editor').classList.add('accepted');
+            } else if (field === 'business-purpose') {
+                formData.businessPurpose = improvedResponses.businessPurpose;
+                document.getElementById('business-purpose-editor').classList.add('accepted');
+            } else if (field === 'agent-address') {
+                formData.agentAddress = improvedResponses.agentAddress;
+                document.getElementById('agent-address-editor').classList.add('accepted');
+            }
+        }
+
+        // Revert to original response
+        function revertEdit(field) {
+            if (field === 'llc-name') {
+                formData.llcName = originalResponses.llcName;
+                document.getElementById('llc-name-editor').classList.add('reverted');
+            } else if (field === 'business-purpose') {
+                formData.businessPurpose = originalResponses.businessPurpose;
+                document.getElementById('business-purpose-editor').classList.add('reverted');
+            } else if (field === 'agent-address') {
+                formData.agentAddress = originalResponses.agentAddress;
+                document.getElementById('agent-address-editor').classList.add('reverted');
+            }
+        }
+
+        // Download document function (simulated)
+        function downloadDocument(type) {
+            // In a real application, this would download the actual document
+            // For this demo, we'll just show an alert
+            
+            if (type === 'certificate') {
+                alert('In a real application, this would download your Certificate of Organization.');
+            } else if (type === 'operating') {
+                alert('In a real application, this would download your Operating Agreement.');
+            }
+        }
+
+        // Send email function (simulated)
+        function sendEmail() {
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('email-message').value.trim();
+            
+            if (!email) {
+                alert('Please enter your email address.');
+                return;
+            }
+            
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            alert(`In a real application, your LLC documents would be sent to ${email}.`);
+        }
+
+        // Complete process and return to dashboard
+        function completeProcess() {
+            // Send completion message to parent window
+            sendCompletionToParent();
+            
+            // Show completion message
+            alert('LLC formation process completed! Returning to dashboard...');
+        }
+
+        // Send progress update to parent window
+        function sendProgressToParent(progress) {
+            // Send message to parent window
+            window.parent.postMessage({
+                type: 'progress-update',
+                progress: progress
+            }, '*');
+        }
+
+        // Send LLC data to parent window
+        function sendLLCDataToParent() {
+            // Send message to parent window
+            window.parent.postMessage({
+                type: 'llc-data',
+                state: formData.state,
+                llcName: formData.llcName || ''
+            }, '*');
+        }
+
+        // Send completion message to parent window
+        function sendCompletionToParent() {
+            // Send message to parent window
+            window.parent.postMessage({
+                type: 'llc-complete'
+            }, '*');
+        }
+
+        // Update state info based on selection (placeholder)
+        function updateStateInfo() {
+            const stateSelect = document.getElementById('state');
+            const stateCode = stateSelect.value;
+            
+            if (!stateCode) {
+                document.getElementById('state-info').style.display = 'none';
+                return;
+            }
+            
+            // Display state information (placeholder)
+            document.getElementById('state-info').style.display = 'block';
+            
+            // This would normally pull from a state database
+            let stateDetails = `
+                <p><strong>Filing Fee:</strong> $125</p>
+                <p><strong>Processing Time:</strong> 7-10 business days</p>
+                <p><strong>Form Name:</strong> Certificate of Organization</p>
+            `;
+            
+            document.getElementById('state-details').innerHTML = stateDetails;
+        }
+    </script>
+</body>
+</html>

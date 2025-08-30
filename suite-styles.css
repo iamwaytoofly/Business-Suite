@@ -1,0 +1,307 @@
+/* Business Startup Suite Styles */
+
+/* Base Styles */
+:root {
+    --primary-color: #2c7be5;
+    --primary-dark: #1a68d1;
+    --secondary-color: #6c757d;
+    --success-color: #42ba96;
+    --warning-color: #f6c343;
+    --danger-color: #df4759;
+    --light-color: #f9fbfd;
+    --dark-color: #12263f;
+    --border-color: #e3ebf6;
+    --text-color: #3e4b5b;
+    --text-muted: #95aac9;
+    --background-color: #f9fbfd;
+    --font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Suite Header */
+.suite-header {
+    background: linear-gradient(135deg, #2c7be5 0%, #1a68d1 100%);
+    padding: 40px 30px;
+}
+
+.suite-header h1 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+}
+
+/* Navigation */
+.app-nav {
+    background-color: white;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(18, 38, 63, 0.03);
+}
+
+.app-nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow-x: auto;
+}
+
+.app-nav li {
+    flex-shrink: 0;
+}
+
+.app-nav a {
+    display: block;
+    padding: 15px 20px;
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.app-nav li.active a {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+.app-nav a:hover {
+    color: var(--primary-color);
+    background-color: rgba(44, 123, 229, 0.05);
+}
+
+/* App Sections */
+.app-section {
+    display: none;
+    padding: 0;
+}
+
+.app-section.active {
+    display: block;
+}
+
+.app-frame {
+    width: 100%;
+    height: 800px;
+    border: none;
+}
+
+/* Dashboard */
+.dashboard-header {
+    padding: 30px;
+    background-color: white;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dashboard-header h2 {
+    margin-bottom: 10px;
+    color: var(--dark-color);
+}
+
+/* Progress Overview */
+.progress-overview {
+    padding: 30px;
+    background-color: white;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.progress-overview h3 {
+    margin-bottom: 20px;
+    color: var(--dark-color);
+}
+
+.progress-item {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.progress-percent {
+    color: var(--text-muted);
+}
+
+.progress-bar {
+    height: 8px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress-bar .progress {
+    height: 100%;
+    background-color: var(--primary-color);
+}
+
+.start-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+}
+
+/* App Cards */
+.app-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 0 30px 30px;
+}
+
+.app-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 1rem 2rem rgba(18, 38, 63, 0.1);
+}
+
+.card-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.card-icon svg {
+    width: 48px;
+    height: 48px;
+}
+
+.llc-icon {
+    background-color: rgba(44, 123, 229, 0.1);
+}
+
+.llc-icon svg {
+    fill: var(--primary-color);
+}
+
+.ein-icon {
+    background-color: rgba(66, 186, 150, 0.1);
+}
+
+.ein-icon svg {
+    fill: var(--success-color);
+}
+
+.bank-icon {
+    background-color: rgba(246, 195, 67, 0.1);
+}
+
+.bank-icon svg {
+    fill: var(--warning-color);
+}
+
+.license-icon {
+    background-color: rgba(223, 71, 89, 0.1);
+}
+
+.license-icon svg {
+    fill: var(--danger-color);
+}
+
+.app-card h3 {
+    margin-bottom: 15px;
+    color: var(--dark-color);
+}
+
+.app-card p {
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+/* Getting Started */
+.getting-started {
+    padding: 30px;
+    background-color: white;
+    margin-top: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03);
+}
+
+.getting-started h3 {
+    margin-bottom: 20px;
+    color: var(--dark-color);
+}
+
+.getting-started ol {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.getting-started li {
+    margin-bottom: 15px;
+}
+
+/* Coming Soon */
+.coming-soon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 30px;
+    text-align: center;
+}
+
+.coming-soon h2 {
+    margin-bottom: 20px;
+    color: var(--dark-color);
+}
+
+.coming-soon p {
+    margin-bottom: 30px;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .suite-header {
+        padding: 30px 20px;
+    }
+    
+    .suite-header h1 {
+        font-size: 2.2rem;
+    }
+    
+    .app-nav ul {
+        flex-wrap: nowrap;
+    }
+    
+    .app-nav a {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+    }
+    
+    .app-cards {
+        grid-template-columns: 1fr;
+        padding: 0 20px 20px;
+    }
+    
+    .progress-overview,
+    .dashboard-header,
+    .getting-started {
+        padding: 20px;
+    }
+    
+    .start-btn {
+        position: static;
+        width: 100%;
+        margin-top: 10px;
+    }
+}
