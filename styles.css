@@ -377,6 +377,124 @@ textarea {
 }
 
 /* Responsive Design */
+/* Print Styles */
+@media print {
+    /* Hide all non-printable elements */
+    header,
+    footer,
+    .progress-container,
+    .step-indicators,
+    .button-group,
+    .btn,
+    button,
+    nav,
+    .app-nav,
+    .back-btn,
+    .help-text {
+        display: none !important;
+    }
+    
+    /* Hide all sections except the one marked as printable */
+    .form-section {
+        display: none !important;
+    }
+    
+    .form-section.printable {
+        display: block !important;
+        page-break-inside: avoid;
+    }
+    
+    /* Style the printable content */
+    body {
+        padding: 0;
+        margin: 0;
+        font-size: 12pt;
+        line-height: 1.4;
+        color: #000;
+        background: white;
+    }
+    
+    .container {
+        max-width: 100%;
+        margin: 0;
+        box-shadow: none;
+        border: none;
+    }
+    
+    .printable-content {
+        display: block !important;
+        margin: 0;
+        padding: 20pt;
+    }
+    
+    .printable-content h1,
+    .printable-content h2,
+    .printable-content h3 {
+        color: #000;
+        margin-bottom: 10pt;
+    }
+    
+    .printable-content h1 {
+        font-size: 18pt;
+        border-bottom: 2pt solid #000;
+        padding-bottom: 5pt;
+    }
+    
+    .printable-content h2 {
+        font-size: 16pt;
+    }
+    
+    .printable-content h3 {
+        font-size: 14pt;
+    }
+    
+    .printable-content p,
+    .printable-content li {
+        font-size: 12pt;
+        margin-bottom: 6pt;
+    }
+    
+    .printable-content ul,
+    .printable-content ol {
+        margin-left: 20pt;
+    }
+    
+    /* Print-specific layout for form previews */
+    .form-preview,
+    .form-preview-content,
+    .tracking-info,
+    .results-summary,
+    .license-list,
+    .license-checklist,
+    .document-section,
+    .appointment-confirmation,
+    .bank-section {
+        border: 1pt solid #ccc;
+        padding: 10pt;
+        margin-bottom: 10pt;
+        page-break-inside: avoid;
+    }
+    
+    .form-field {
+        background-color: #f0f0f0;
+        padding: 2pt;
+        border: 1pt solid #999;
+    }
+    
+    /* Ensure important content doesn't break across pages */
+    .license-item,
+    .checklist-item,
+    .editor-container {
+        page-break-inside: avoid;
+        margin-bottom: 10pt;
+    }
+    
+    /* Print button itself should be hidden */
+    .print-btn {
+        display: none !important;
+    }
+}
+
 @media (max-width: 768px) {
     body {
         padding: 10px;
@@ -426,4 +544,27 @@ textarea {
         margin-right: 10px;
         flex-shrink: 0;
     }
+}
+
+/* Print Button Styles */
+.print-btn {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.print-btn:hover {
+    background-color: #5a6268;
+}
+
+.print-btn svg {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
 }

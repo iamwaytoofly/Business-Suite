@@ -564,169 +564,180 @@
 
             <!-- Step 3: License Results -->
             <section id="license-results" class="form-section">
-                <h2>Your Required Licenses & Permits</h2>
+                <h2>Your Required Licenses & Permits
+                    <button class="print-btn" onclick="printLicenseResults()">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17 17H7V14H5V19C5 19.5523 5.44772 20 6 20H18C18.5523 20 19 19.5523 19 19V14H17V17ZM19 7H5C3.89543 7 3 7.89543 3 9V14C3 15.1046 3.89543 16 5 16H7V12H17V16H19C20.1046 16 21 15.1046 21 14V9C21 7.89543 20.1046 7 19 7ZM17 3H7C6.44772 3 6 3.44772 6 4V7H18V4C18 3.44772 17.5523 3 17 3Z"/>
+                        </svg>
+                        Print
+                    </button>
+                </h2>
                 <p>Based on your business type and location, here are the licenses and permits you need:</p>
                 
-                <div class="results-summary">
-                    <h3>Summary</h3>
-                    <div class="summary-counts">
-                        <div class="summary-count federal">
-                            <h4>Federal</h4>
-                            <div class="count">2</div>
-                        </div>
-                        <div class="summary-count state">
-                            <h4>State</h4>
-                            <div class="count">3</div>
-                        </div>
-                        <div class="summary-count local">
-                            <h4>Local</h4>
-                            <div class="count">2</div>
-                        </div>
-                    </div>
-                    <p>We've identified 7 licenses and permits that your business needs to operate legally. Click on each item below for detailed information and application instructions.</p>
-                </div>
-                
-                <div class="license-list">
-                    <!-- Federal Licenses -->
-                    <div class="license-item">
-                        <div class="license-header" onclick="toggleLicense('federal-ein')">
-                            <div>
-                                <div class="license-type">Federal</div>
-                                <h3>Employer Identification Number (EIN)</h3>
+                <div class="printable-content" id="license-results-content">
+                    <h1>Required Business Licenses & Permits</h1>
+                    
+                    <div class="results-summary">
+                        <h3>Summary</h3>
+                        <div class="summary-counts">
+                            <div class="summary-count federal">
+                                <h4>Federal</h4>
+                                <div class="count">2</div>
                             </div>
-                            <div class="license-toggle">+</div>
-                        </div>
-                        <div class="license-content" id="federal-ein">
-                            <div class="license-description">
-                                <p>An Employer Identification Number (EIN) is a unique nine-digit number assigned by the IRS to identify your business for tax purposes. It's like a Social Security Number for your business.</p>
+                            <div class="summary-count state">
+                                <h4>State</h4>
+                                <div class="count">3</div>
                             </div>
-                            <div class="license-meta">
-                                <div class="license-meta-item">
-                                    <h4>Issuing Agency</h4>
-                                    <p>Internal Revenue Service (IRS)</p>
-                                </div>
-                                <div class="license-meta-item">
-                                    <h4>Fee</h4>
-                                    <p>Free</p>
-                                </div>
-                                <div class="license-meta-item">
-                                    <h4>Processing Time</h4>
-                                    <p>Immediate (online) or 4-5 weeks (mail)</p>
-                                </div>
-                                <div class="license-meta-item">
-                                    <h4>Renewal</h4>
-                                    <p>Not required</p>
-                                </div>
-                            </div>
-                            <div class="license-requirements">
-                                <h4>Requirements</h4>
-                                <ul>
-                                    <li>Legal business name</li>
-                                    <li>Business address</li>
-                                    <li>Responsible party's Social Security Number</li>
-                                </ul>
-                            </div>
-                            <div class="license-actions">
-                                <button class="btn primary" onclick="applyForLicense('federal-ein')">Apply Online</button>
-                                <button class="btn secondary" onclick="downloadForm('federal-ein')">Download Form</button>
+                            <div class="summary-count local">
+                                <h4>Local</h4>
+                                <div class="count">2</div>
                             </div>
                         </div>
+                        <p>We've identified 7 licenses and permits that your business needs to operate legally. Below are detailed information and application instructions for each license.</p>
                     </div>
                     
-                    <div class="license-item">
-                        <div class="license-header" onclick="toggleLicense('federal-liquor')">
-                            <div>
-                                <div class="license-type">Federal</div>
-                                <h3>Alcohol Beverage License</h3>
+                    <div class="license-list">
+                        <!-- Federal Licenses -->
+                        <div class="license-item">
+                            <div class="license-header" onclick="toggleLicense('federal-ein')">
+                                <div>
+                                    <div class="license-type">Federal</div>
+                                    <h3>Employer Identification Number (EIN)</h3>
+                                </div>
+                                <div class="license-toggle">+</div>
                             </div>
-                            <div class="license-toggle">+</div>
+                            <div class="license-content" id="federal-ein">
+                                <div class="license-description">
+                                    <p>An Employer Identification Number (EIN) is a unique nine-digit number assigned by the IRS to identify your business for tax purposes. It's like a Social Security Number for your business.</p>
+                                </div>
+                                <div class="license-meta">
+                                    <div class="license-meta-item">
+                                        <h4>Issuing Agency</h4>
+                                        <p>Internal Revenue Service (IRS)</p>
+                                    </div>
+                                    <div class="license-meta-item">
+                                        <h4>Fee</h4>
+                                        <p>Free</p>
+                                    </div>
+                                    <div class="license-meta-item">
+                                        <h4>Processing Time</h4>
+                                        <p>Immediate (online) or 4-5 weeks (mail)</p>
+                                    </div>
+                                    <div class="license-meta-item">
+                                        <h4>Renewal</h4>
+                                        <p>Not required</p>
+                                    </div>
+                                </div>
+                                <div class="license-requirements">
+                                    <h4>Requirements</h4>
+                                    <ul>
+                                        <li>Legal business name</li>
+                                        <li>Business address</li>
+                                        <li>Responsible party's Social Security Number</li>
+                                    </ul>
+                                </div>
+                                <div class="license-actions">
+                                    <button class="btn primary" onclick="applyForLicense('federal-ein')">Apply Online</button>
+                                    <button class="btn secondary" onclick="downloadForm('federal-ein')">Download Form</button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="license-content" id="federal-liquor">
-                            <div class="license-description">
-                                <p>Required for businesses that manufacture, wholesale, import, or sell alcoholic beverages. This federal permit is required in addition to any state and local alcohol licenses.</p>
+                        
+                        <div class="license-item">
+                            <div class="license-header" onclick="toggleLicense('federal-liquor')">
+                                <div>
+                                    <div class="license-type">Federal</div>
+                                    <h3>Alcohol Beverage License</h3>
+                                </div>
+                                <div class="license-toggle">+</div>
                             </div>
-                            <div class="license-meta">
-                                <div class="license-meta-item">
-                                    <h4>Issuing Agency</h4>
-                                    <p>Alcohol and Tobacco Tax and Trade Bureau (TTB)</p>
+                            <div class="license-content" id="federal-liquor">
+                                <div class="license-description">
+                                    <p>Required for businesses that manufacture, wholesale, import, or sell alcoholic beverages. This federal permit is required in addition to any state and local alcohol licenses.</p>
                                 </div>
-                                <div class="license-meta-item">
-                                    <h4>Fee</h4>
-                                    <p>$100 - $1,000 (varies by type)</p>
+                                <div class="license-meta">
+                                    <div class="license-meta-item">
+                                        <h4>Issuing Agency</h4>
+                                        <p>Alcohol and Tobacco Tax and Trade Bureau (TTB)</p>
+                                    </div>
+                                    <div class="license-meta-item">
+                                        <h4>Fee</h4>
+                                        <p>$100 - $1,000 (varies by type)</p>
+                                    </div>
+                                    <div class="license-meta-item">
+                                        <h4>Processing Time</h4>
+                                        <p>90-120 days</p>
+                                    </div>
+                                    <div class="license-meta-item">
+                                        <h4>Renewal</h4>
+                                        <p>Annual</p>
+                                    </div>
                                 </div>
-                                <div class="license-meta-item">
-                                    <h4>Processing Time</h4>
-                                    <p>90-120 days</p>
+                                <div class="license-requirements">
+                                    <h4>Requirements</h4>
+                                    <ul>
+                                        <li>Business formation documents</li>
+                                        <li>Floor plan of premises</li>
+                                        <li>Background check</li>
+                                        <li>Proof of financial responsibility</li>
+                                    </ul>
                                 </div>
-                                <div class="license-meta-item">
-                                    <h4>Renewal</h4>
-                                    <p>Annual</p>
+                                <div class="license-actions">
+                                    <button class="btn primary" onclick="applyForLicense('federal-liquor')">Apply Online</button>
+                                    <button class="btn secondary" onclick="downloadForm('federal-liquor')">Download Form</button>
                                 </div>
-                            </div>
-                            <div class="license-requirements">
-                                <h4>Requirements</h4>
-                                <ul>
-                                    <li>Business formation documents</li>
-                                    <li>Floor plan of premises</li>
-                                    <li>Background check</li>
-                                    <li>Proof of financial responsibility</li>
-                                </ul>
-                            </div>
-                            <div class="license-actions">
-                                <button class="btn primary" onclick="applyForLicense('federal-liquor')">Apply Online</button>
-                                <button class="btn secondary" onclick="downloadForm('federal-liquor')">Download Form</button>
                             </div>
                         </div>
+                        
+                        <!-- State Licenses -->
+                        <div class="license-item">
+                            <div class="license-header" onclick="toggleLicense('state-business')">
+                                <div>
+                                    <div class="license-type">State</div>
+                                    <h3>Business License</h3>
+                                </div>
+                                <div class="license-toggle">+</div>
+                            </div>
+                            <div class="license-content" id="state-business">
+                                <div class="license-description">
+                                    <p>A general business license required for most businesses operating in the state. This license registers your business with the state tax authority.</p>
+                                </div>
+                                <div class="license-meta">
+                                    <div class="license-meta-item">
+                                        <h4>Issuing Agency</h4>
+                                        <p>State Department of Revenue</p>
+                                    </div>
+                                    <div class="license-meta-item">
+                                        <h4>Fee</h4>
+                                        <p>$90</p>
+                                    </div>
+                                    <div class="license-meta-item">
+                                        <h4>Processing Time</h4>
+                                        <p>10-14 business days</p>
+                                    </div>
+                                    <div class="license-meta-item">
+                                        <h4>Renewal</h4>
+                                        <p>Annual</p>
+                                    </div>
+                                </div>
+                                <div class="license-requirements">
+                                    <h4>Requirements</h4>
+                                    <ul>
+                                        <li>Business name and address</li>
+                                        <li>Business structure information</li>
+                                        <li>Federal EIN</li>
+                                        <li>Description of business activities</li>
+                                    </ul>
+                                </div>
+                                <div class="license-actions">
+                                    <button class="btn primary" onclick="applyForLicense('state-business')">Apply Online</button>
+                                    <button class="btn secondary" onclick="downloadForm('state-business')">Download Form</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- More licenses would be listed here -->
                     </div>
-                    
-                    <!-- State Licenses -->
-                    <div class="license-item">
-                        <div class="license-header" onclick="toggleLicense('state-business')">
-                            <div>
-                                <div class="license-type">State</div>
-                                <h3>Business License</h3>
-                            </div>
-                            <div class="license-toggle">+</div>
-                        </div>
-                        <div class="license-content" id="state-business">
-                            <div class="license-description">
-                                <p>A general business license required for most businesses operating in the state. This license registers your business with the state tax authority.</p>
-                            </div>
-                            <div class="license-meta">
-                                <div class="license-meta-item">
-                                    <h4>Issuing Agency</h4>
-                                    <p>State Department of Revenue</p>
-                                </div>
-                                <div class="license-meta-item">
-                                    <h4>Fee</h4>
-                                    <p>$90</p>
-                                </div>
-                                <div class="license-meta-item">
-                                    <h4>Processing Time</h4>
-                                    <p>10-14 business days</p>
-                                </div>
-                                <div class="license-meta-item">
-                                    <h4>Renewal</h4>
-                                    <p>Annual</p>
-                                </div>
-                            </div>
-                            <div class="license-requirements">
-                                <h4>Requirements</h4>
-                                <ul>
-                                    <li>Business name and address</li>
-                                    <li>Business structure information</li>
-                                    <li>Federal EIN</li>
-                                    <li>Description of business activities</li>
-                                </ul>
-                            </div>
-                            <div class="license-actions">
-                                <button class="btn primary" onclick="applyForLicense('state-business')">Apply Online</button>
-                                <button class="btn secondary" onclick="downloadForm('state-business')">Download Form</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- More licenses would be listed here -->
                 </div>
                 
                 <div class="button-group">
@@ -737,17 +748,30 @@
 
             <!-- Step 4: License Checklist -->
             <section id="license-checklist" class="form-section">
-                <h2>Your License & Permit Checklist</h2>
+                <h2>Your License & Permit Checklist
+                    <button class="print-btn" onclick="printLicenseChecklist()">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17 17H7V14H5V19C5 19.5523 5.44772 20 6 20H18C18.5523 20 19 19.5523 19 19V14H17V17ZM19 7H5C3.89543 7 3 7.89543 3 9V14C3 15.1046 3.89543 16 5 16H7V12H17V16H19C20.1046 16 21 15.1046 21 14V9C21 7.89543 20.1046 7 19 7ZM17 3H7C6.44772 3 6 3.44772 6 4V7H18V4C18 3.44772 17.5523 3 17 3Z"/>
+                        </svg>
+                        Print
+                    </button>
+                </h2>
                 <p>Use this checklist to track your progress as you obtain each required license and permit.</p>
                 
-                <div class="license-checklist">
+                <div class="license-checklist printable-content" id="license-checklist-content">
+                    <h1>Business License & Permit Checklist</h1>
+                    <p>Track your progress as you obtain each required license and permit for your business.</p>
+                    
                     <div class="checklist-item">
                         <div class="checklist-checkbox">
                             <input type="checkbox" id="check-ein" onchange="updateChecklist('check-ein')">
                         </div>
                         <div class="checklist-content">
                             <h4>Employer Identification Number (EIN)</h4>
-                            <p>Apply online through the IRS website for immediate processing.</p>
+                            <p><strong>Agency:</strong> Internal Revenue Service (IRS)</p>
+                            <p><strong>Fee:</strong> Free</p>
+                            <p><strong>Processing Time:</strong> Immediate (online) or 4-5 weeks (mail)</p>
+                            <p><strong>Instructions:</strong> Apply online through the IRS website for immediate processing.</p>
                             <div class="license-actions">
                                 <button class="btn primary" onclick="applyForLicense('federal-ein')">Apply Online</button>
                                 <button class="btn secondary" onclick="downloadForm('federal-ein')">Download Form</button>
@@ -761,7 +785,10 @@
                         </div>
                         <div class="checklist-content">
                             <h4>State Business License</h4>
-                            <p>Apply through your state's Department of Revenue website.</p>
+                            <p><strong>Agency:</strong> State Department of Revenue</p>
+                            <p><strong>Fee:</strong> $90</p>
+                            <p><strong>Processing Time:</strong> 10-14 business days</p>
+                            <p><strong>Instructions:</strong> Apply through your state's Department of Revenue website.</p>
                             <div class="license-actions">
                                 <button class="btn primary" onclick="applyForLicense('state-business')">Apply Online</button>
                                 <button class="btn secondary" onclick="downloadForm('state-business')">Download Form</button>
@@ -775,7 +802,10 @@
                         </div>
                         <div class="checklist-content">
                             <h4>Alcohol Beverage License</h4>
-                            <p>Apply through the Alcohol and Tobacco Tax and Trade Bureau (TTB).</p>
+                            <p><strong>Agency:</strong> Alcohol and Tobacco Tax and Trade Bureau (TTB)</p>
+                            <p><strong>Fee:</strong> $100 - $1,000 (varies by type)</p>
+                            <p><strong>Processing Time:</strong> 90-120 days</p>
+                            <p><strong>Instructions:</strong> Apply through the Alcohol and Tobacco Tax and Trade Bureau (TTB).</p>
                             <div class="license-actions">
                                 <button class="btn primary" onclick="applyForLicense('federal-liquor')">Apply Online</button>
                                 <button class="btn secondary" onclick="downloadForm('federal-liquor')">Download Form</button>
@@ -784,6 +814,16 @@
                     </div>
                     
                     <!-- More checklist items would be listed here -->
+                    
+                    <div style="margin-top: 30pt;">
+                        <h3>Important Notes</h3>
+                        <ul>
+                            <li>Complete the licenses in the order shown - some licenses require others to be in place first</li>
+                            <li>Keep copies of all applications and confirmations for your records</li>
+                            <li>Set calendar reminders for renewal dates to avoid lapses</li>
+                            <li>Contact the issuing agencies directly if you have questions about specific requirements</li>
+                        </ul>
+                    </div>
                 </div>
                 
                 <div class="button-group">
@@ -1200,6 +1240,60 @@
                 type: 'licenses-complete',
                 licenseCount: 7
             }, '*');
+        }
+
+        // Print license results function
+        function printLicenseResults() {
+            // Temporarily mark the license results section as printable
+            const licenseResultsSection = document.getElementById('license-results');
+            const licenseResultsContent = document.getElementById('license-results-content');
+            
+            if (licenseResultsSection && licenseResultsContent) {
+                licenseResultsSection.classList.add('printable');
+                licenseResultsContent.classList.add('printable-content');
+                
+                // Expand all license items for printing
+                const licenseContents = document.querySelectorAll('.license-content');
+                licenseContents.forEach(content => {
+                    content.style.display = 'block';
+                });
+                
+                // Trigger print
+                window.print();
+                
+                // Remove printable classes after printing
+                setTimeout(() => {
+                    licenseResultsSection.classList.remove('printable');
+                    licenseResultsContent.classList.remove('printable-content');
+                    // Reset license content visibility
+                    licenseContents.forEach(content => {
+                        if (!content.classList.contains('active')) {
+                            content.style.display = 'none';
+                        }
+                    });
+                }, 100);
+            }
+        }
+
+        // Print license checklist function
+        function printLicenseChecklist() {
+            // Temporarily mark the license checklist section as printable
+            const licenseChecklistSection = document.getElementById('license-checklist');
+            const licenseChecklistContent = document.getElementById('license-checklist-content');
+            
+            if (licenseChecklistSection && licenseChecklistContent) {
+                licenseChecklistSection.classList.add('printable');
+                licenseChecklistContent.classList.add('printable-content');
+                
+                // Trigger print
+                window.print();
+                
+                // Remove printable classes after printing
+                setTimeout(() => {
+                    licenseChecklistSection.classList.remove('printable');
+                    licenseChecklistContent.classList.remove('printable-content');
+                }, 100);
+            }
         }
     </script>
 </body>

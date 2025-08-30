@@ -393,11 +393,18 @@
 
             <!-- Step 4: Form Preview -->
             <section id="form-preview" class="form-section">
-                <h2>Review Your Application</h2>
+                <h2>Review Your Application
+                    <button class="print-btn" onclick="printFormPreview()">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17 17H7V14H5V19C5 19.5523 5.44772 20 6 20H18C18.5523 20 19 19.5523 19 19V14H17V17ZM19 7H5C3.89543 7 3 7.89543 3 9V14C3 15.1046 3.89543 16 5 16H7V12H17V16H19C20.1046 16 21 15.1046 21 14V9C21 7.89543 20.1046 7 19 7ZM17 3H7C6.44772 3 6 3.44772 6 4V7H18V4C18 3.44772 17.5523 3 17 3Z"/>
+                        </svg>
+                        Print
+                    </button>
+                </h2>
                 <p>We've filled out IRS Form SS-4 based on your information. Please review it for accuracy.</p>
                 
-                <div class="form-preview">
-                    <h3>IRS Form SS-4: Application for Employer Identification Number</h3>
+                <div class="form-preview printable-content" id="form-preview-content">
+                    <h1>IRS Form SS-4: Application for Employer Identification Number</h1>
                     
                     <p>Here's how your information will appear on the official IRS form:</p>
                     
@@ -482,13 +489,41 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-.997-4L6.76 11.757l1.414-1.414 2.829 2.829 5.656-5.657 1.415 1.414L11.003 16z"/></svg>
                     </div>
                     
-                    <h2>Congratulations!</h2>
+                    <h2>Congratulations!
+                        <button class="print-btn" onclick="printConfirmation()">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17 17H7V14H5V19C5 19.5523 5.44772 20 6 20H18C18.5523 20 19 19.5523 19 19V14H17V17ZM19 7H5C3.89543 7 3 7.89543 3 9V14C3 15.1046 3.89543 16 5 16H7V12H17V16H19C20.1046 16 21 15.1046 21 14V9C21 7.89543 20.1046 7 19 7ZM17 3H7C6.44772 3 6 3.44772 6 4V7H18V4C18 3.44772 17.5523 3 17 3Z"/>
+                            </svg>
+                            Print
+                        </button>
+                    </h2>
                     <p>Your EIN application has been submitted successfully.</p>
                     
-                    <div class="tracking-info">
+                    <div class="tracking-info printable-content" id="ein-confirmation-content">
+                        <h1>EIN Application Confirmation</h1>
                         <p><span class="label">Your EIN:</span> <strong>12-3456789</strong></p>
                         <p><span class="label">Business Name:</span> Mountain Bike Adventures, LLC</p>
                         <p><span class="label">Submission Date:</span> August 9, 2025</p>
+                        <p><span class="label">Application Method:</span> Online Submission</p>
+                        
+                        <h3>Important Information</h3>
+                        <p>Your Employer Identification Number (EIN) is now active and can be used for:</p>
+                        <ul>
+                            <li>Opening business bank accounts</li>
+                            <li>Filing business tax returns</li>
+                            <li>Hiring employees</li>
+                            <li>Establishing business credit</li>
+                        </ul>
+                        
+                        <h3>Next Steps</h3>
+                        <ol>
+                            <li>Open a business bank account</li>
+                            <li>Apply for business licenses and permits</li>
+                            <li>File business tax returns</li>
+                            <li>Hire employees (if applicable)</li>
+                        </ol>
+                        
+                        <p><strong>Note:</strong> Keep this confirmation for your records. You will also receive an official EIN confirmation letter from the IRS.</p>
                     </div>
                     
                     <p>We've also emailed your EIN confirmation letter to you.</p>
@@ -699,6 +734,48 @@
                 type: 'ein-complete',
                 ein: '12-3456789'
             }, '*');
+        }
+
+        // Print form preview function
+        function printFormPreview() {
+            // Temporarily mark the form preview section as printable
+            const formPreviewSection = document.getElementById('form-preview');
+            const formPreviewContent = document.getElementById('form-preview-content');
+            
+            if (formPreviewSection && formPreviewContent) {
+                formPreviewSection.classList.add('printable');
+                formPreviewContent.classList.add('printable-content');
+                
+                // Trigger print
+                window.print();
+                
+                // Remove printable classes after printing
+                setTimeout(() => {
+                    formPreviewSection.classList.remove('printable');
+                    formPreviewContent.classList.remove('printable-content');
+                }, 100);
+            }
+        }
+
+        // Print confirmation function
+        function printConfirmation() {
+            // Temporarily mark the confirmation section as printable
+            const confirmationSection = document.getElementById('confirmation');
+            const confirmationContent = document.getElementById('ein-confirmation-content');
+            
+            if (confirmationSection && confirmationContent) {
+                confirmationSection.classList.add('printable');
+                confirmationContent.classList.add('printable-content');
+                
+                // Trigger print
+                window.print();
+                
+                // Remove printable classes after printing
+                setTimeout(() => {
+                    confirmationSection.classList.remove('printable');
+                    confirmationContent.classList.remove('printable-content');
+                }, 100);
+            }
         }
     </script>
 </body>

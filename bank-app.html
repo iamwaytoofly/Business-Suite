@@ -781,59 +781,96 @@
 
             <!-- Step 4: Account Opening Guide -->
             <section id="account-guide" class="form-section">
-                <h2>Account Opening Guide</h2>
+                <h2>Account Opening Guide
+                    <button class="print-btn" onclick="printAccountGuide()">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17 17H7V14H5V19C5 19.5523 5.44772 20 6 20H18C18.5523 20 19 19.5523 19 19V14H17V17ZM19 7H5C3.89543 7 3 7.89543 3 9V14C3 15.1046 3.89543 16 5 16H7V12H17V16H19C20.1046 16 21 15.1046 21 14V9C21 7.89543 20.1046 7 19 7ZM17 3H7C6.44772 3 6 3.44772 6 4V7H18V4C18 3.44772 17.5523 3 17 3Z"/>
+                        </svg>
+                        Print
+                    </button>
+                </h2>
                 <p>Follow these steps to open your business bank account successfully.</p>
                 
-                <div class="bank-section">
-                    <h3>Step-by-Step Process</h3>
-                    <ol class="steps-list">
-                        <li>
-                            <strong>Gather all required documents</strong>
-                            <p>Make sure you have all the necessary documents ready before visiting the branch. This includes your EIN, business formation documents, identification, and any other required paperwork.</p>
-                        </li>
-                        <li>
-                            <strong>Visit the branch or attend your scheduled appointment</strong>
-                            <p>Arrive at the branch with all your documents. If you've scheduled an appointment, you'll meet with a business banking specialist who will guide you through the process.</p>
-                        </li>
-                        <li>
-                            <strong>Complete the account application</strong>
-                            <p>You'll need to fill out an account application form. The bank representative will help you with this process and answer any questions you may have.</p>
-                        </li>
-                        <li>
-                            <strong>Provide your initial deposit</strong>
-                            <p>Most banks require an initial deposit to open your account. Be prepared to make this deposit via cash, check, or transfer from another account.</p>
-                        </li>
-                        <li>
-                            <strong>Set up online banking</strong>
-                            <p>Once your account is open, you'll want to set up online banking access. This will allow you to manage your account, make transfers, and pay bills online.</p>
-                        </li>
-                        <li>
-                            <strong>Order checks and debit cards</strong>
-                            <p>If needed, you can order business checks and debit cards for your account. These typically arrive within 7-10 business days.</p>
-                        </li>
-                    </ol>
+                <div class="printable-content" id="account-guide-content">
+                    <h1>Business Bank Account Opening Guide</h1>
+                    <p><strong>Selected Bank:</strong> First National Bank</p>
+                    <p><strong>Account Type:</strong> Basic Business Checking</p>
+                    
+                    <div class="bank-section">
+                        <h3>Step-by-Step Process</h3>
+                        <ol class="steps-list">
+                            <li>
+                                <strong>Gather all required documents</strong>
+                                <p>Make sure you have all the necessary documents ready before visiting the branch. This includes your EIN, business formation documents, identification, and any other required paperwork.</p>
+                            </li>
+                            <li>
+                                <strong>Visit the branch or attend your scheduled appointment</strong>
+                                <p>Arrive at the branch with all your documents. If you've scheduled an appointment, you'll meet with a business banking specialist who will guide you through the process.</p>
+                            </li>
+                            <li>
+                                <strong>Complete the account application</strong>
+                                <p>You'll need to fill out an account application form. The bank representative will help you with this process and answer any questions you may have.</p>
+                            </li>
+                            <li>
+                                <strong>Provide your initial deposit</strong>
+                                <p>Most banks require an initial deposit to open your account. Be prepared to make this deposit via cash, check, or transfer from another account.</p>
+                            </li>
+                            <li>
+                                <strong>Set up online banking</strong>
+                                <p>Once your account is open, you'll want to set up online banking access. This will allow you to manage your account, make transfers, and pay bills online.</p>
+                            </li>
+                            <li>
+                                <strong>Order checks and debit cards</strong>
+                                <p>If needed, you can order business checks and debit cards for your account. These typically arrive within 7-10 business days.</p>
+                            </li>
+                        </ol>
+                    </div>
+                    
+                    <div class="bank-section">
+                        <h3>Required Documents Checklist</h3>
+                        <ul>
+                            <li>□ Employer Identification Number (EIN) from the IRS</li>
+                            <li>□ Business formation documents (Articles of Incorporation, Certificate of Organization, etc.)</li>
+                            <li>□ Business license (if required in your area)</li>
+                            <li>□ Personal identification (driver's license or passport)</li>
+                            <li>□ Initial deposit (cash, check, or transfer authorization)</li>
+                            <li>□ Operating Agreement or Bylaws (if applicable)</li>
+                            <li>□ Business partnership agreements (if applicable)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bank-section">
+                        <h3>After Opening Your Account</h3>
+                        <p>Once your account is open, here are some important next steps:</p>
+                        <ul>
+                            <li><strong>Set up direct deposits</strong> for any regular payments you receive</li>
+                            <li><strong>Link your payment processing</strong> systems to your new account</li>
+                            <li><strong>Update your payment information</strong> with vendors and service providers</li>
+                            <li><strong>Set up automatic bill payments</strong> for recurring expenses</li>
+                            <li><strong>Download the mobile banking app</strong> for on-the-go account management</li>
+                        </ul>
+                    </div>
                 </div>
                 
-                <div class="bank-section">
-                    <h3>After Opening Your Account</h3>
-                    <p>Once your account is open, here are some important next steps:</p>
-                    <ul>
-                        <li><strong>Set up direct deposits</strong> for any regular payments you receive</li>
-                        <li><strong>Link your payment processing</strong> systems to your new account</li>
-                        <li><strong>Update your payment information</strong> with vendors and service providers</li>
-                        <li><strong>Set up automatic bill payments</strong> for recurring expenses</li>
-                        <li><strong>Download the mobile banking app</strong> for on-the-go account management</li>
-                    </ul>
-                </div>
-                
-                <div id="appointment-confirmation" class="appointment-confirmation" style="display: none;">
+                <div id="appointment-confirmation" class="appointment-confirmation printable-content" style="display: none;" id="appointment-confirmation-content">
+                    <h1>Appointment Confirmation</h1>
                     <h3>Your Appointment is Confirmed!</h3>
                     <p>You're scheduled to meet with a business banking specialist at:</p>
-                    <p><strong>First National Bank - Main Branch</strong></p>
+                    <p><strong>Bank:</strong> First National Bank - Main Branch</p>
                     <p><strong>Date:</strong> <span id="confirmed-date">August 15, 2025</span></p>
                     <p><strong>Time:</strong> <span id="confirmed-time">10:00 AM</span></p>
-                    <p>A confirmation email has been sent to <span id="confirmed-email">you@example.com</span></p>
+                    <p><strong>Contact Email:</strong> <span id="confirmed-email">you@example.com</span></p>
                     <p>Remember to bring all required documents to your appointment.</p>
+                    
+                    <div class="bank-section">
+                        <h3>What to Bring</h3>
+                        <ul>
+                            <li>Employer Identification Number (EIN)</li>
+                            <li>Business formation documents</li>
+                            <li>Personal identification</li>
+                            <li>Initial deposit</li>
+                        </ul>
+                    </div>
                 </div>
                 
                 <div class="button-group">
@@ -1116,6 +1153,36 @@
                 bankName: formData.bankName,
                 accountType: formData.accountType
             }, '*');
+        }
+
+        // Print account opening guide function
+        function printAccountGuide() {
+            // Temporarily mark the account guide section as printable
+            const accountGuideSection = document.getElementById('account-guide');
+            const accountGuideContent = document.getElementById('account-guide-content');
+            
+            if (accountGuideSection && accountGuideContent) {
+                accountGuideSection.classList.add('printable');
+                accountGuideContent.classList.add('printable-content');
+                
+                // If appointment confirmation is visible, make it printable too
+                const appointmentConfirmation = document.getElementById('appointment-confirmation');
+                if (appointmentConfirmation && appointmentConfirmation.style.display !== 'none') {
+                    appointmentConfirmation.classList.add('printable-content');
+                }
+                
+                // Trigger print
+                window.print();
+                
+                // Remove printable classes after printing
+                setTimeout(() => {
+                    accountGuideSection.classList.remove('printable');
+                    accountGuideContent.classList.remove('printable-content');
+                    if (appointmentConfirmation) {
+                        appointmentConfirmation.classList.remove('printable-content');
+                    }
+                }, 100);
+            }
         }
     </script>
 </body>

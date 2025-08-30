@@ -278,8 +278,67 @@
 
             <!-- Final Step: Documents Generated -->
             <section id="documents" class="form-section">
-                <h2>Your LLC Documents Are Ready!</h2>
+                <h2>Your LLC Documents Are Ready!
+                    <button class="print-btn" onclick="printLLCDocuments()">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17 17H7V14H5V19C5 19.5523 5.44772 20 6 20H18C18.5523 20 19 19.5523 19 19V14H17V17ZM19 7H5C3.89543 7 3 7.89543 3 9V14C3 15.1046 3.89543 16 5 16H7V12H17V16H19C20.1046 16 21 15.1046 21 14V9C21 7.89543 20.1046 7 19 7ZM17 3H7C6.44772 3 6 3.44772 6 4V7H18V4C18 3.44772 17.5523 3 17 3Z"/>
+                        </svg>
+                        Print
+                    </button>
+                </h2>
                 <p>Congratulations! Your LLC formation documents have been generated with your improved responses.</p>
+                
+                <div class="printable-content" id="llc-documents-content">
+                    <h1>LLC Formation Documents Summary</h1>
+                    <p><strong>Business Name:</strong> Mountain Bike Adventures, LLC</p>
+                    <p><strong>State of Formation:</strong> Colorado</p>
+                    <p><strong>Date Generated:</strong> <span id="document-date"></span></p>
+                    
+                    <div class="document-section">
+                        <h3 id="certificate-title">Certificate of Organization</h3>
+                        <p><strong>Document Type:</strong> Official state filing document</p>
+                        <p><strong>Purpose:</strong> This is the official document you'll file with your state to legally form your LLC.</p>
+                        <p><strong>Filing Fee:</strong> $125 (varies by state)</p>
+                        <p><strong>Processing Time:</strong> 7-10 business days</p>
+                        <p><strong>Status:</strong> Ready for download and filing</p>
+                    </div>
+                    
+                    <div class="document-section">
+                        <h3>Operating Agreement</h3>
+                        <p><strong>Document Type:</strong> Internal governance document</p>
+                        <p><strong>Purpose:</strong> This document outlines how your LLC will be run. While not required to be filed with the state, it's important to have.</p>
+                        <p><strong>Status:</strong> Ready for download</p>
+                        <p><strong>Key Features:</strong></p>
+                        <ul>
+                            <li>Management structure and member roles</li>
+                            <li>Profit and loss distribution</li>
+                            <li>Decision-making procedures</li>
+                            <li>Dissolution procedures</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="document-section">
+                        <h3>Next Steps</h3>
+                        <ol>
+                            <li>Download and review all documents</li>
+                            <li>File your Certificate of Organization with the state filing office</li>
+                            <li>Apply for an EIN (Employer Identification Number) with the IRS</li>
+                            <li>Open a business bank account</li>
+                            <li>Check for any required business licenses or permits</li>
+                            <li>Consider obtaining business insurance</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="document-section">
+                        <h3>Important Reminders</h3>
+                        <ul>
+                            <li>Keep copies of all filed documents for your records</li>
+                            <li>File annual reports as required by your state</li>
+                            <li>Maintain separate business and personal finances</li>
+                            <li>Follow your Operating Agreement procedures</li>
+                        </ul>
+                    </div>
+                </div>
                 
                 <div class="document-section">
                     <h3 id="certificate-title">Certificate of Organization</h3>
@@ -575,6 +634,39 @@
             window.parent.postMessage({
                 type: 'llc-complete'
             }, '*');
+        }
+
+        // Print LLC documents function
+        function printLLCDocuments() {
+            // Set the current date for document generation
+            const currentDate = new Date().toLocaleDateString('en-US', { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+            const dateElement = document.getElementById('document-date');
+            if (dateElement) {
+                dateElement.textContent = currentDate;
+            }
+            
+            // Temporarily mark the documents section as printable
+            const documentsSection = document.getElementById('documents');
+            const documentsContent = document.getElementById('llc-documents-content');
+            
+            if (documentsSection && documentsContent) {
+                documentsSection.classList.add('printable');
+                documentsContent.classList.add('printable-content');
+                
+                // Trigger print
+                window.print();
+                
+                // Remove printable classes after printing
+                setTimeout(() => {
+                    documentsSection.classList.remove('printable');
+                    documentsContent.classList.remove('printable-content');
+                }, 100);
+            }
         }
 
         // Update state info based on selection (placeholder)
